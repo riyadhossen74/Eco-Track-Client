@@ -1,9 +1,10 @@
 import React from 'react';
-import { FaFacebookF, FaInstagram, FaTwitter, FaLeaf } from "react-icons/fa";
+import { FaFacebookF, FaInstagram,  FaLeaf } from "react-icons/fa";
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
     return (
-       <footer className="bg-gradient-to-r from-green-700 via-green-600 to-green-800 text-white py-5 pt-10 px-6">
+       <footer className="bg-gradient-to-r from-green-700 via-green-600 to-green-800 text-white mt-10 py-5 pt-10 px-6">
       <div className=" mx-auto grid justify-between px-5 md:px-30 grid-cols-1 md:grid-cols-4 gap-10">
 
         {/* Logo + About */}
@@ -74,7 +75,7 @@ const Footer = () => {
             <FaInstagram />
           </a>
           <a href="#" className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition">
-            <FaTwitter />
+           <FaXTwitter />
           </a>
         </div>
       </div>
