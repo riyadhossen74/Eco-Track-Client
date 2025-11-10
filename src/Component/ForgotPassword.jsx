@@ -1,34 +1,52 @@
-import React from 'react';
+import React, { use, useRef } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const ForgotPassword = () => {
-    return (
-       <div className="flex justify-center min-h-screen items-center">
+  const { sendPassResetEmailFunc, setLoading } = use(AuthContext);
+  const emailRef = useRef(null);
+
+  const handleForgetPassword = () => {
+    console.log();
+    const email = emailRef.current.value;
+    sendPassResetEmailFunc(email)
+      .then((res) => {
+        setLoading(false);
+        alert("Check your email to reset password");
+      })
+      .catch((e) => {
+        alert(e.message);
+      });
+  };
+  return (
+    <div className="flex justify-center min-h-screen items-center">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">
-        <h2 className="font-bold text-2xl text-center pt-5">
-          Forgot Now!
-        </h2>
-        <form
-        //  onSubmit={handleLogin} 
-        className="card-body">
+        <h2 className="font-bold text-2xl text-center pt-5">Forgot Now!</h2>
+        <form className="card-body">
           <fieldset className="fieldset">
-            <label className="label">Email</label>
+            <label  className="label">
+              Email
+            </label>
             <input
               type="email"
               className="input"
               placeholder="Email"
               name="email"
+              ref={emailRef}
               required
             />
-            
-            
-            {/* {error && <p className="text-red-500 text-xs">{error}</p>} */}
-            <button className="btn btn-neutral mt-4">Forgot</button>
+
+            <button
+            type="button"
+              onClick={handleForgetPassword}
+              className="btn btn-neutral mt-4"
+            >
+              Forgot
+            </button>
           </fieldset>
-         
         </form>
       </div>
     </div>
-    );
+  );
 };
 
 export default ForgotPassword;

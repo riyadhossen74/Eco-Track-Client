@@ -4,65 +4,63 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-  const [showPassword, setShowPassword] =useState(false)
-  const { createUser, setUser, updateUser, googleSignIn, setLoading } = use(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const { createUser, setUser, updateUser, googleSignIn, setLoading } =
+    use(AuthContext);
   const [nameError, setNameError] = useState("");
- const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const location = useLocation();
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const form = e.target;
-  const name = form.name.value;
-  const photo = form.photo.value;
-  const email = form.email.value;
-  const password = form.password.value;
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
-  // Name Validation
-  if (name.length < 4) {
-    setNameError("Name should be at least 4 characters");
-    return;   
-  } else {
-    setNameError("");
-  }
+    // Name Validation
+    if (name.length < 4) {
+      setNameError("Name should be at least 4 characters");
+      return;
+    } else {
+      setNameError("");
+    }
 
-  // Create Account
-  createUser(email, password)
-    .then((result) => {
-      const user = result.user;
+    // Create Account
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
 
-      // Update Profile
-       updateUser({
-        displayName: name,
-        photoURL: photo,
-      }).then(() => {
-        setUser({ ...user, displayName: name, photoURL: photo });
-        
-        // ✅ Navigate safely (React Router v6+)
-        navigate(location.state?.from || "/");
+        // Update Profile
+        updateUser({
+          displayName: name,
+          photoURL: photo,
+        }).then(() => {
+          setUser({ ...user, displayName: name, photoURL: photo });
+
+          // ✅ Navigate safely (React Router v6+)
+          navigate(location.state?.from || "/");
+        });
+      })
+      .catch((error) => {
+        console.error(error.code, error.message);
+        alert(error.code);
       });
-    })
-    .catch((error) => {
-      console.error(error.code, error.message);
-      alert(error.code);
-    });
-};
-
+  };
 
   const handleSignIn = () => {
-  googleSignIn()
-    .then((res) => {
-      setUser(res.user);
-      navigate(location.state?.from || "/");
-      setLoading(false);
-      alert.success("Sign in successful!");
-    })
-    .catch((error) => {
-      console.error("Google sign-in error:", error.code);
-    });
-};
-
-
+    googleSignIn()
+      .then((res) => {
+        setUser(res.user);
+        navigate(location.state?.from || "/");
+        setLoading(false);
+        alert.success("Sign in successful!");
+      })
+      .catch((error) => {
+        console.error("Google sign-in error:", error.code);
+      });
+  };
 
   return (
     <div className="flex justify-center min-h-screen items-center">
@@ -90,38 +88,46 @@ const Register = () => {
               required
             />
             <label className="label">Email</label>
-             <div className="relative">
-                                     <label className="label">Password</label>
-                                     <input
-                                       type={showPassword? 'text':'password'}
-                                       className="input"
-                                       placeholder="Password"
-                                       name="password"
-                                       required
-                                     />
-                                     <button onClick={() => setShowPassword(!showPassword)} className="absolute bottom-3 right-6">{showPassword? <FaEye />:<FaEyeSlash />}</button>
-                                   </div>
-            <label className="label">Password</label>
+
             <input
-              type="password"
+              type="email"
               className="input"
-              placeholder="Password"
-              name="password"
+              placeholder="Email"
+              name="email"
               required
             />
+            <div className="relative">
+              <label className="label">Password</label>
+              <input
+                type={showPassword ? "text" : "password"}
+                className="input"
+                placeholder="Password"
+                name="password"
+                required
+              />
+              <button
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute bottom-3 right-6"
+              >
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
+              </button>
+            </div>
 
             <button className="btn btn-neutral mt-4">Register</button>
           </fieldset>
-          
+
           {/* Google */}
-          <button type="button" onClick={handleSignIn} className="btn bg-white text-black border-[#e5e5e5]">
+          <button
+            type="button"
+            onClick={handleSignIn}
+            className="btn bg-white text-black border-[#e5e5e5]"
+          >
             <svg
               aria-label="Google logo"
               width="16"
               height="16"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
-              
             >
               <g>
                 <path d="m0 0H512V512H0" fill="#fff"></path>
