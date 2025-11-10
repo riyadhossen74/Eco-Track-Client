@@ -8,6 +8,7 @@ const Register = () => {
   const { createUser, setUser, updateUser, googleSignIn, setLoading } =
     use(AuthContext);
   const [nameError, setNameError] = useState("");
+  const [passError, setPassError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const handleSubmit = (e) => {
@@ -26,6 +27,12 @@ const Register = () => {
     } else {
       setNameError("");
     }
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+    if (!passwordRegex.test(password)) {
+  setPassError("Password must contain at least 1 uppercase, 1 lowercase and be at least 6 characters long");
+}
+
 
     // Create Account
     createUser(email, password)
@@ -45,7 +52,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.error(error.code, error.message);
-        alert(error.code);
+        
       });
   };
 
@@ -107,10 +114,11 @@ const Register = () => {
               />
               <button
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute bottom-3 right-6"
+                className="absolute bottom-11 right-6"
               >
                 {showPassword ? <FaEye /> : <FaEyeSlash />}
               </button>
+               {passError && <p className="text-red-600 text-xs">{passError}</p>}
             </div>
 
             <button className="btn btn-neutral mt-4">Register</button>

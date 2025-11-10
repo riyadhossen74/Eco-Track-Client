@@ -4,6 +4,10 @@ import Home from "../Component/Home";
 import LoginPage from "../Component/LoginPage";
 import Register from "../Component/Register";
 import ForgotPassword from "../Component/ForgotPassword";
+import Challenges from "../Component/Challenges";
+import AllChallenges from "../Component/AllChallenges";
+import AllTips from "../Component/AllTips";
+import AllEvent from "../Component/AllEvent";
 
 
 
@@ -14,7 +18,8 @@ const router = createBrowserRouter([
     children:[
         {
             index:true,
-            element:<Home></Home>
+            element:<Home></Home>,
+            loader:() => fetch('http://localhost:5000/challenges')
         },
         {
             path:'/login',
@@ -27,6 +32,20 @@ const router = createBrowserRouter([
         {
             path:'/forgot',
             element:<ForgotPassword></ForgotPassword>
+        },
+        {
+            path:'/tips',
+            element:<AllTips></AllTips>
+        },
+        {
+            path:'/all-event',
+            element:<AllEvent></AllEvent>
+        },
+        {
+            path:'/challenges',
+            element:<AllChallenges></AllChallenges>,
+            loader:() => fetch('http://localhost:5000/challenges')
+            
         },
     ]
   },

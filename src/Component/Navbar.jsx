@@ -21,8 +21,18 @@ const Navbar = () => {
     },
     {
       id: 3,
-      name: "Install",
-      path: "/install",
+      name: "My Activities",
+      path: "/my-activities",
+    },
+    {
+      id: 4,
+      name: "Tips",
+      path: "/tips",
+    },
+    {
+      id: 5,
+      name: "Event",
+      path: "/all-event",
     },
   ];
   const link = navData.map((data) => (
