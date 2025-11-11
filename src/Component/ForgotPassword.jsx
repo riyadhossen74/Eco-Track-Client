@@ -1,5 +1,6 @@
 import React, { use, useRef } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { Link } from "react-router";
 
 const ForgotPassword = () => {
   const { sendPassResetEmailFunc, setLoading } = use(AuthContext);
@@ -43,6 +44,7 @@ const ForgotPassword = () => {
               Forgot
             </button>
           </fieldset>
+          <Link to='/login' className="text-center text-sm text-green-300 hover:text-green-700">Back to Login</Link>
         </form>
       </div>
     </div>

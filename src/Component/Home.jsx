@@ -1,21 +1,23 @@
 import React from "react";
-import HeroSection from "./HeroSection";
+
 import RecentTips from "./RecentTips";
 import Challenges from "./Challenges";
 import UpComingEvent from "./UpComingEvent";
-import WhyTOGrow from "./WhyTOGrow";
+
 import HowItIsWork from "./HowItIsWork";
 import { useLoaderData } from "react-router";
 import ActiveChallenges from "./ActiveChallenges";
+import HeroSection from "./HeroSection";
+import WhyToGreen from "./WhyToGreen";
 
 const Home = () => {
-  const challenges = useLoaderData()
-  console.log(challenges)
+  const challenges = useLoaderData();
+  console.log(challenges);
   const firstThree = challenges.slice(0, 3);
-  
+
   return (
     <div>
-      <header className="container mx-auto">
+      <header className="">
         <HeroSection></HeroSection>
       </header>
       <main>
@@ -23,7 +25,7 @@ const Home = () => {
         <Challenges firstThree={firstThree}></Challenges>
         <RecentTips></RecentTips>
         <UpComingEvent></UpComingEvent>
-        <WhyTOGrow></WhyTOGrow>
+        <WhyToGreen></WhyToGreen>
         <HowItIsWork></HowItIsWork>
       </main>
     </div>

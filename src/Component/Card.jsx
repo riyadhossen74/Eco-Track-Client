@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Card = ({data}) => {
     return (
@@ -17,7 +18,7 @@ const Card = ({data}) => {
     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
   </div>
 
-  <div className="p-6 relative z-10">
+  <div className="p-6 relative z-10 ">
     <h3 className="text-xl font-semibold group-hover:text-blue-600 transition-colors duration-200">
       {data.title}
     </h3>
@@ -38,13 +39,11 @@ const Card = ({data}) => {
 
     {/* Buttons */}
     <div className="flex gap-3 mt-6">
-      <button className="flex-1 px-4 py-2 rounded-md bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
-        Join Now
-      </button>
+      
 
-      <button className="flex-1 px-4 py-2 rounded-md border border-gray-300 text-gray-800 hover:bg-gray-100 transition">
+      <Link to={`/challenges/${data._id}`} className="flex-1 px-4 py-2 rounded-md border border-gray-300 text-center text-gray-800 hover:bg-green-400 transition">
         Details
-      </button>
+      </Link>
     </div>
   </div>
 </div>

@@ -22,17 +22,7 @@ const AllEvent = () => {
   ))}
 
   </div>
-  {/* All event button */}
-        <div
-               tabindex="0"
-               role="button"
-               className="user-profile  container mx-auto my-5"
-             >
-               <Link to="/event" class="user-profile-inner">
-                 <p>All Event</p>
-               </Link>
-               <div></div>
-             </div>
+  
 
        </div>
     );

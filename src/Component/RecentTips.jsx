@@ -31,7 +31,7 @@ const RecentTips = () => {
               role="button"
               className="user-profile  container mx-auto my-5"
             >
-              <Link to="/challenges" class="user-profile-inner">
+              <Link to="/tips" class="user-profile-inner">
                 <p>All Tips</p>
               </Link>
               <div></div>

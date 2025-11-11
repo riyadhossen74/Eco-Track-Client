@@ -8,6 +8,9 @@ import Challenges from "../Component/Challenges";
 import AllChallenges from "../Component/AllChallenges";
 import AllTips from "../Component/AllTips";
 import AllEvent from "../Component/AllEvent";
+import ChallengesDetalis from "../Component/ChallengesDetalis";
+import CreateChallenges from "../Component/CreateChallenges";
+import MyActivictes from "../Component/MyActivictes";
 
 
 
@@ -20,6 +23,10 @@ const router = createBrowserRouter([
             index:true,
             element:<Home></Home>,
             loader:() => fetch('http://localhost:5000/challenges')
+        },
+        {
+            path:'/my-activates',
+            element:<MyActivictes></MyActivictes>
         },
         {
             path:'/login',
@@ -47,6 +54,16 @@ const router = createBrowserRouter([
             loader:() => fetch('http://localhost:5000/challenges')
             
         },
+        {
+            path:'/challenges/:id',
+            element:<ChallengesDetalis></ChallengesDetalis>,
+            loader: ({params}) => fetch(`http://localhost:5000/challenges/${params.id}`)
+        },
+        {
+            path:'/create-challenges',
+            element:<CreateChallenges></CreateChallenges>
+        }
+
     ]
   },
 ]);

@@ -8,6 +8,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Navbar = () => {
   const {user, logOut}= use(AuthContext)
+  
   const navData = [
     {
       id: 1,
@@ -21,8 +22,8 @@ const Navbar = () => {
     },
     {
       id: 3,
-      name: "My Activities",
-      path: "/my-activities",
+      name: "My Activates",
+      path: "/my-activates",
     },
     {
       id: 4,
@@ -41,7 +42,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
    const handleLogOut = () => {
-    // console.log("log");
+  
     logOut()
       .then((result) => {
         alert("susses log Out");
@@ -62,7 +63,7 @@ const Navbar = () => {
             )}
           </span>
           <ul
-            className={`'md:hidden absolute duration-1000 bg-amber-400 p-5 text-black ${
+            className={`'md:hidden absolute duration-1000 z-50 bg-amber-400 p-5 text-black ${
               open ? "top-10" : "-top-200"
             }`}
           >
