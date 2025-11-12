@@ -1,16 +1,27 @@
-import React, { use, useEffect, useState } from "react";
+import React, { use, useEffect,  useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
+import Swal from "sweetalert2";
+import { Link } from "react-router";
+import Challenges from "./Challenges";
+
+
 const MyActivictes = () => {
-  const {user} =use(AuthContext)
+  
+  
+  const { user } = use(AuthContext);
   const [challenges, setChallenges] = useState([]);
   const [loading, setLoading] = useState(true);
-  const userId = user?.uid
+  
+  const userId = user?.uid;
+  console.log(userId);
 
   useEffect(() => {
     const fetchChallenges = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/challenges/join/${userId}`);
+        const res = await fetch(
+          `http://localhost:5000/challenges/join/${userId}`
+        );
         const data = await res.json();
         setChallenges(data);
       } catch (err) {
@@ -25,8 +36,34 @@ const MyActivictes = () => {
 
   if (loading) return <p>Loading...</p>;
 
+  
+
+  const handleDelete = (id) => {
+    console.log("delete data", id);
+    fetch(`http://localhost:5000/my-activities/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("after delete data", data);
+        if (data.deletedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Deleted Done",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          const remainingData = challenges.filter((user) => user._id !== id);
+          setChallenges(remainingData);
+        }
+        
+      });
+  };
+  
+
   return (
-    <section className="max-w-5xl mx-auto my-10 space-y-6">
+    <section className="max-w-5xl mx-auto my-10 space-y-6 ">
       {challenges.length === 0 ? (
         <p className="text-center text-slate-600 dark:text-slate-400">
           No joined challenges found 😔
@@ -90,14 +127,14 @@ const MyActivictes = () => {
 
             {/* Buttons */}
             <div className="flex justify-end gap-3">
-              <button
-                onClick={() => alert(`Update progress for ${challenge.title}`)}
+              <Link to={`/my-activates/${challenge._id}`}
+                
                 className="px-4 py-2 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
               >
                 Update Progress
-              </button>
+              </Link>
               <button
-                onClick={() => alert(`Leave challenge: ${challenge.title}`)}
+                onClick={() => handleDelete(challenge._id)}
                 className="px-4 py-2 rounded-xl bg-red-600 text-white font-medium hover:bg-red-700 transition"
               >
                 Leave Challenge
@@ -106,6 +143,9 @@ const MyActivictes = () => {
           </article>
         ))
       )}
+     
+
+      
     </section>
   );
 };

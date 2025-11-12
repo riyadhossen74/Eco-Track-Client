@@ -11,6 +11,8 @@ import AllEvent from "../Component/AllEvent";
 import ChallengesDetalis from "../Component/ChallengesDetalis";
 import CreateChallenges from "../Component/CreateChallenges";
 import MyActivictes from "../Component/MyActivictes";
+import Error from "../Error/Error";
+import UpdateProgroess from "./UpdateProgroess";
 
 
 
@@ -27,7 +29,7 @@ const router = createBrowserRouter([
         {
             path:'/my-activates',
             element:<MyActivictes></MyActivictes>,
-             loader: ({params}) => fetch(`http://localhost:5000/challenges/join${params.id}`)
+             
         },
         {
             path:'/login',
@@ -50,6 +52,11 @@ const router = createBrowserRouter([
             element:<AllEvent></AllEvent>
         },
         {
+            path:'/my-activates/:id',
+            element:<UpdateProgroess></UpdateProgroess>,
+            loader: ({params}) => fetch(`http://localhost:5000/my-activities/${params.id}`)
+        },
+        {
             path:'/challenges',
             element:<AllChallenges></AllChallenges>,
             loader:() => fetch('http://localhost:5000/challenges')
@@ -67,6 +74,10 @@ const router = createBrowserRouter([
 
     ]
   },
+  {
+    path:'*',
+    element:<Error></Error>
+  }
 ]);
  
 

@@ -2,6 +2,7 @@ import React, { use, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -62,7 +63,13 @@ const Register = () => {
         setUser(res.user);
         navigate(location.state?.from || "/");
         setLoading(false);
-        alert.success("Sign in successful!");
+        Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Your Account Done",
+  showConfirmButton: false,
+  timer: 1500
+});
       })
       .catch((error) => {
         console.error("Google sign-in error:", error.code);

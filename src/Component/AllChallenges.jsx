@@ -4,19 +4,19 @@ import { Link, useLoaderData } from "react-router";
 import Card from "./Card";
 
 const AllChallenges = () => {
-  const challenges = useLoaderData(); // all challenges from backend
+  const challenges = useLoaderData(); 
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  // 🔹 Filter challenges by category
+  
   const filteredChallenges = selectedCategory
     ? challenges.filter((item) => item.category === selectedCategory)
     : challenges;
   return (
     <>
-      <div className="grid grid-cols-5 gap-3  my-5 container mx-auto">
+      <div className="grid grid-cols-5 gap-3  my-5 container mx-auto sticky top-19 z-50  shadow-lg">
         <input
           type="text"
-          className="input col-span-3 w-full "
+          className="input col-span-3 w-full  bg-transparent"
           placeholder="Search"
         />
         <select
@@ -54,7 +54,7 @@ const AllChallenges = () => {
         </Link>
       </div>
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {filteredChallenges.map((data) => (
             <Card data={data}></Card>
           ))}

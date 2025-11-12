@@ -14,12 +14,12 @@ const RecentTips = () => {
       .then((data) => setCards(data))
       .catch((err) => console.error(err));
   }, []);
-  const data = cards.slice(0, 3);
+  const data = cards.slice(0, 4);
   return (
    <div>
       <h2 className="text-3xl font-bold text-center mb-10">Recent Tips</h2>
 
-      <div className="container mx-auto p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="container mx-auto p-6 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
         {data.map((tip) => (
           <TipsCard key={tip._id} tip={tip} />
         ))}

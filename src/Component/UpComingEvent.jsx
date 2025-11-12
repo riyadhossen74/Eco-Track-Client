@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const UpComingEvent = () => {
     const [event, setEvent] = useState([]);
-    const data = event.slice(0, 3)
+    const data = event.slice(0, 4)
     
       useEffect(() => {
         // Replace with your API endpoint or local JSON
@@ -15,9 +15,9 @@ const UpComingEvent = () => {
       }, []);
     return (
        <div>
-        <div className="p-4 container mx-auto grid md:grid-cols-3 gap-5">
-  {data.map((event, index) => (
-    <EventCard key={event._id || index} event={event} />
+        <div className="p-4 container mx-auto grid md:grid-cols-3 lg:grid-cols-4 gap-5">
+  {data.map((event, ) => (
+    <EventCard key={event._id } event={event} />
   ))}
 
   </div>

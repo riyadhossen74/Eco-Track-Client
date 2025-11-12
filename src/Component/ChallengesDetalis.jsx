@@ -1,10 +1,12 @@
-import React, { use } from "react";
-import { useLoaderData } from "react-router";
+import React, { use, useState } from "react";
+import {  useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const ChallengesDetalis = () => {
-  const data = useLoaderData();
+  const loaderData = useLoaderData();
+  const [data, setData] = useState(loaderData);
   console.log(data);
   const {
     title,
@@ -18,17 +20,18 @@ const ChallengesDetalis = () => {
     endDate,
   } = data;
   const { user } = use(AuthContext) || {};
+  const Navigate = useNavigate();
 
   const handleJoin = async () => {
+     
     if (!user?.email) {
-      alert("Please log in before joining a challenge!");
+     Navigate('/register')
       return;
     }
 
     const joinedChallenge = {
-      
       title: data.title,
-      userId:user.uid,
+      userId: user.uid,
       status: "Not Started",
       progress: 0,
       joinDate: new Date(),
@@ -41,8 +44,19 @@ const ChallengesDetalis = () => {
         "http://localhost:5000/challenges/join",
         joinedChallenge
       );
+
       if (res.data.insertedId) {
-        alert("Challenge joined successfully!");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Challenge joined successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setData((prev) => ({
+          ...prev,
+          participants: prev.participants + 1,
+        }));
       } else {
         alert("Failed to join challenge!");
       }

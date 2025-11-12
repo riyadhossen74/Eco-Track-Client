@@ -1,7 +1,10 @@
 import React, { use } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const CreateChallenges = () => {
+  const navigate = useNavigate()
   const { user } = use(AuthContext);
   console.log(user);
   const handleSubmit = (e) => {
@@ -27,10 +30,17 @@ const CreateChallenges = () => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log('after data', data)
+     Swal.fire({
+  position: "top-end",
+  icon: "success",
+  title: "Challenges Create Done",
+  showConfirmButton: false,
+  timer: 1500
+});
+     navigate('/challenges') 
     })
     .catch(err =>{
-      console.log(err)
+      
     })
   };
   return (
@@ -52,8 +62,7 @@ const CreateChallenges = () => {
             type="text"
             name="title"
             placeholder="Challenge Title"
-            // value={formData.title}
-            // onChange={handleChange}
+            
             className="w-full p-3 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100"
             required
           />
@@ -66,8 +75,7 @@ const CreateChallenges = () => {
           </label>
           <select
             name="category"
-            // value={formData.category}
-            // onChange={handleChange}
+           
             className="w-full p-3 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100"
             required
           >
@@ -88,8 +96,7 @@ const CreateChallenges = () => {
           <textarea
             name="description"
             placeholder="Describe the challenge and its goals..."
-            // value={formData.description}
-            // onChange={handleChange}
+          
             className="w-full p-3 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100"
             rows={4}
             required
@@ -106,8 +113,7 @@ const CreateChallenges = () => {
               type="number"
               name="duration"
               placeholder="30"
-              //   value={formData.duration}
-              //   onChange={handleChange}
+             
               className="w-full p-3 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100"
               required
             />
@@ -120,8 +126,7 @@ const CreateChallenges = () => {
               type="text"
               name="impactMetric"
               placeholder="kg plastic saved"
-              //   value={formData.impactMetric}
-              //   onChange={handleChange}
+             
               className="w-full p-3 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100"
               required
             />
@@ -137,8 +142,7 @@ const CreateChallenges = () => {
             type="text"
             name="target"
             placeholder="Reduce plastic waste by 50%"
-            // value={formData.target}
-            // onChange={handleChange}
+           
             className="w-full p-3 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100"
             required
           />
@@ -153,8 +157,7 @@ const CreateChallenges = () => {
             <input
               type="date"
               name="startDate"
-              //   value={formData.startDate}
-              //   onChange={handleChange}
+             
               className="w-full p-3 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100"
               required
             />
@@ -166,8 +169,7 @@ const CreateChallenges = () => {
             <input
               type="date"
               name="endDate"
-              //   value={formData.endDate}
-              //   onChange={handleChange}
+          
               className="w-full p-3 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100"
               required
             />
@@ -183,8 +185,7 @@ const CreateChallenges = () => {
             type="text"
             name="imageUrl"
             placeholder="https://example.com/image.jpg"
-            // value={formData.imageUrl}
-            // onChange={handleChange}
+          
             className="w-full p-3 border border-slate-300 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100"
           />
         </div>
@@ -197,9 +198,12 @@ const CreateChallenges = () => {
           >
             Create Challenge
           </button>
-          <button className="px-6 py-3 bg-gray-300 dark:bg-slate-600 text-slate-900 dark:text-slate-100 rounded-lg hover:bg-gray-400 dark:hover:bg-slate-500 transition">
+          <Link
+          type="button"
+            to='/challenges'
+           className="px-6 py-3 bg-gray-300 dark:bg-slate-600 text-slate-900 dark:text-slate-100 rounded-lg hover:bg-gray-400 dark:hover:bg-slate-500 transition">
             Cancel
-          </button>
+          </Link>
         </div>
       </form>
     </div>
