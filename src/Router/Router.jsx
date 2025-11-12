@@ -26,7 +26,8 @@ const router = createBrowserRouter([
         },
         {
             path:'/my-activates',
-            element:<MyActivictes></MyActivictes>
+            element:<MyActivictes></MyActivictes>,
+             loader: ({params}) => fetch(`http://localhost:5000/challenges/join${params.id}`)
         },
         {
             path:'/login',

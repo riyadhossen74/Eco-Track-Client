@@ -70,11 +70,7 @@ const AuthProvider = ({ children }) => {
     sendPassResetEmailFunc,
   };
 
-  return (
-    <AuthContext value={AuthData}>
-      {children}
-    </AuthContext>
-  );
+  return <AuthContext value={AuthData}>{children}</AuthContext>;
 };
 
 export default AuthProvider;
