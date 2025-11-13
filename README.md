@@ -4,7 +4,7 @@
 
 EcoTrack is an interactive web application designed to encourage users to adopt eco-friendly habits through engaging challenges and community participation.
 
----
+----------------------------------------------------------------------------------------------------------
 
 ## 🔥 Features
 

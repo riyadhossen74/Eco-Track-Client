@@ -19,11 +19,12 @@ const MyActivictes = () => {
     const fetchChallenges = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/challenges/join/${userId}`
+          `https://eco-track-one-flame.vercel.app/challenges/join/${userId}`
         );
         const data = await res.json();
         setChallenges(data);
       } catch (err) {
+        console.log(err);
       } finally {
         setLoading(false);
       }

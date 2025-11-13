@@ -41,7 +41,7 @@ const ChallengesDetalis = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/challenges/join",
+        "https://eco-track-one-flame.vercel.app/challenges/join",
         joinedChallenge
       );
 
