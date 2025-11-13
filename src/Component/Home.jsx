@@ -12,7 +12,7 @@ import WhyToGreen from "./WhyToGreen";
 
 const Home = () => {
   const challenges = useLoaderData();
-  console.log(challenges);
+  
   const firstThree = challenges.slice(0, 4);
 
   return (

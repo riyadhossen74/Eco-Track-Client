@@ -13,6 +13,7 @@ import CreateChallenges from "../Component/CreateChallenges";
 import MyActivictes from "../Component/MyActivictes";
 import Error from "../Error/Error";
 import UpdateProgroess from "../Component/UpdateProgroess";
+import PrivetRoute from "../AuthProvider/PrivetRoute";
 
 
 
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
         },
         {
             path:'/my-activates',
-            element:<MyActivictes></MyActivictes>,
+            element:<PrivetRoute><MyActivictes></MyActivictes></PrivetRoute>,
              
         },
         {
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
         },
         {
             path:'/my-activates/:id',
-            element:<UpdateProgroess></UpdateProgroess>,
+            element:<PrivetRoute><UpdateProgroess></UpdateProgroess></PrivetRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/my-activities/${params.id}`)
         },
         {
@@ -70,7 +71,7 @@ const router = createBrowserRouter([
         },
         {
             path:'/create-challenges',
-            element:<CreateChallenges></CreateChallenges>
+            element:<PrivetRoute><CreateChallenges></CreateChallenges></PrivetRoute>
         }
 
     ]

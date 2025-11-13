@@ -13,6 +13,7 @@ const AllChallenges = () => {
     : challenges;
   return (
     <>
+    <title>All Challenges</title>
       <div className="grid md:grid-cols-5 gap-3  my-5 container mx-auto md:sticky md:top-19 z-50  shadow-lg">
         <input
           type="text"

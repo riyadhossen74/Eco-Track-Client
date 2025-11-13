@@ -7,6 +7,7 @@ const Card = ({data}) => {
   key={data._id}
   className="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
 >
+ 
   <div className="relative">
     <img
       src={data.imageUrl}

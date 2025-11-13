@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { FcBusinessman } from "react-icons/fc";
 import TipsCard from "./TipsCard";
 import { Link } from "react-router";
+import useAxios from "./useAxios";
 
 
 const RecentTips = () => {
   const [cards, setCards] = useState([]);
+const  axiosInstance = useAxios()
 
-  useEffect(() => {
-    // Replace with your API endpoint or local JSON
-    fetch("http://localhost:5000/recent-tips")
-      .then((res) => res.json())
-      .then((data) => setCards(data))
-      .catch((err) => console.error(err));
-  }, []);
+  axiosInstance.get('/recent-tips')
+      .then(data =>{
+        setCards(data.data)
+      })
   const data = cards.slice(0, 4);
   return (
    <div>

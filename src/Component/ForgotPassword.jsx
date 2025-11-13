@@ -7,7 +7,7 @@ const ForgotPassword = () => {
   // const emailRef = useRef(null);
 
   // const handleForgetPassword = () => {
-  //   console.log();
+  //
   //   const email = emailRef.current.value;
   //   sendPassResetEmailFunc(email)
   //     .then((res) => {

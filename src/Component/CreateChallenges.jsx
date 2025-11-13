@@ -8,7 +8,7 @@ const CreateChallenges = () => {
   const axiosInstance = useAxios()
   const navigate = useNavigate()
   const { user } = use(AuthContext);
-  console.log(user);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const challengeData = {

@@ -56,12 +56,12 @@ const Navbar = () => {
         });
       })
       .catch((error) => {
-        // console.log(error)
+       
       });
   };
   return (
     <nav className="bg-white ">
-      <div className="flex justify-between px-5 md:px-30 items-center shadow py-2">
+      <div className="flex justify-between px-5 lg:px-30 items-center shadow py-2">
         <div className="flex items-center text-[#9F62F2] text-2xl font-semibold  gap-1.5  ">
           <span onClick={() => setOpen(!open)}>
             {open ? (
@@ -112,7 +112,7 @@ const Navbar = () => {
                   )}
                 </span>
                 <ul
-                  className={`absolute right-30  w-40 rounded-2xl bg-white dark:bg-slate-800 shadow-lg shadow-black/20 border border-gray-200 dark:border-slate-700 transform transition-all duration-500 origin-top  ${
+                  className={`absolute right-10 lg:right-30  w-40 rounded-2xl bg-white dark:bg-slate-800 shadow-lg shadow-black/20 border border-gray-200 dark:border-slate-700 transform transition-all duration-500 origin-top  ${
                     profile
                       ? "opacity-100 scale-100 translate-y-0"
                       : "opacity-0 scale-75 -translate-y-10 pointer-events-none"

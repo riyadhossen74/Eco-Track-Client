@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const UpdateProgroess = () => {
   const axiosInstance = useAxios();
   const data = useLoaderData();
-  console.log(data);
+ 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -17,7 +17,7 @@ const UpdateProgroess = () => {
       status: e.target.status.value,
       progress: e.target.progress.value,
     };
-    console.log(updateProgress);
+   
     axiosInstance
       .patch(`/my-activities/${data._id}`, updateProgress)
 
@@ -36,7 +36,7 @@ const UpdateProgroess = () => {
          goBack();
       })
       .catch((err) => {
-        console.log(err);
+        
       });
   };
   const goBack = () => {

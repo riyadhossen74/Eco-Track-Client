@@ -28,31 +28,32 @@ const Register = () => {
     } else {
       setNameError("");
     }
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,}$/
+
 
     if (!passwordRegex.test(password)) {
   setPassError("Password must contain at least 1 uppercase, 1 lowercase and be at least 6 characters long");
 }
 
 
-    // Create Account
+   
     createUser(email, password)
       .then((result) => {
         const user = result.user;
 
-        // Update Profile
+        
         updateUser({
           displayName: name,
           photoURL: photo,
         }).then(() => {
           setUser({ ...user, displayName: name, photoURL: photo });
 
-          // ✅ Navigate safely (React Router v6+)
+          
           navigate(location.state?.from || "/");
         });
       })
       .catch((error) => {
-        console.error(error.code, error.message);
+       
         
       });
   };
@@ -61,7 +62,7 @@ const Register = () => {
     googleSignIn()
       .then((res) => {
         setUser(res.user);
-        navigate(location.state?.from || "/");
+        navigate("/");
         setLoading(false);
         Swal.fire({
   position: "top-end",
@@ -72,7 +73,7 @@ const Register = () => {
 });
       })
       .catch((error) => {
-        console.error("Google sign-in error:", error.code);
+        
       });
   };
 
@@ -121,7 +122,7 @@ const Register = () => {
               />
               <button
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute bottom-11 right-6"
+                className="absolute bottom-19 right-6"
               >
                 {showPassword ? <FaEye /> : <FaEyeSlash />}
               </button>

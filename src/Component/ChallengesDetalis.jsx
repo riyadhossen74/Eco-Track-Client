@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const ChallengesDetalis = () => {
   const loaderData = useLoaderData();
   const [data, setData] = useState(loaderData);
-  console.log(data);
+ 
   const {
     title,
     description,
@@ -62,7 +62,7 @@ const ChallengesDetalis = () => {
         alert("Failed to join challenge!");
       }
     } catch (error) {
-      console.error(error);
+     
       alert("Error connecting to the server.");
     }
   };

@@ -10,6 +10,6 @@ const firebaseConfig = {
 };
 
 // Optional: log to check if variables are loaded correctly
-console.log("Firebase Config:", firebaseConfig);
+
 
 export const app = initializeApp(firebaseConfig);

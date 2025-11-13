@@ -7,7 +7,7 @@ const LoginPage = () => {
   const { signIn, googleSignIn, setLoading, setUser } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  // console.log(location);
+ 
   const [error, setError] = useState("");
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,12 +15,12 @@ const LoginPage = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    // console.log({ email, password });
+    
     signIn(email, password)
       .then((userCredential) => {
-        // Signed in successfully
+       
         const user = userCredential.user;
-        // console.log("Logged in user:", user);
+        
         navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
@@ -29,15 +29,16 @@ const LoginPage = () => {
   };
 
    const handleSignIn = () => {
+
   googleSignIn()
     .then((res) => {
       setUser(res.user);
       navigate(location.state?.from || "/");
       setLoading(false);
-      alert.success("Sign in successful!");
+      
     })
     .catch((error) => {
-      console.error("Google sign-in error:", error.code);
+     
     });
 };
     return (

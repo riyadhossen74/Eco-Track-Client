@@ -3,6 +3,8 @@ import { FcBusinessman } from 'react-icons/fc';
 import { IoIosTrendingUp } from 'react-icons/io';
 
 const ActiveChallenges = () => {
+
+
      
     return (
        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 justify-between container mx-auto gap-6">

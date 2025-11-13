@@ -15,7 +15,7 @@ const MyActivictes = () => {
   const [loading, setLoading] = useState(true);
   
   const userId = user?.uid;
-  console.log(userId);
+
 
 
 
@@ -28,7 +28,7 @@ const MyActivictes = () => {
         const data = await res.json();
         setChallenges(data);
       } catch (err) {
-        console.error("Error fetching challenges:", err);
+        ;
       } finally {
         setLoading(false);
       }
@@ -42,11 +42,11 @@ const MyActivictes = () => {
   
 
   const handleDelete = (id) => {
-    console.log("delete data", id);
+    
       axiosInstance.delete(`/my-activities/${id}`,)
       
       .then((data) => {
-        console.log("after delete data", data);
+      
         if (data.data.deletedCount) {
           Swal.fire({
             position: "top-end",
