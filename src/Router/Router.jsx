@@ -12,7 +12,8 @@ import ChallengesDetalis from "../Component/ChallengesDetalis";
 import CreateChallenges from "../Component/CreateChallenges";
 import MyActivictes from "../Component/MyActivictes";
 import Error from "../Error/Error";
-import UpdateProgroess from "./UpdateProgroess";
+import UpdateProgroess from "../Component/UpdateProgroess";
+
 
 
 

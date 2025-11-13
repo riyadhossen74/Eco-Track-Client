@@ -3,11 +3,12 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 import Swal from "sweetalert2";
 import { Link } from "react-router";
-import Challenges from "./Challenges";
+import useAxios from "./useAxios";
+
 
 
 const MyActivictes = () => {
-  
+  const axiosInstance = useAxios();
   
   const { user } = use(AuthContext);
   const [challenges, setChallenges] = useState([]);
@@ -15,6 +16,8 @@ const MyActivictes = () => {
   
   const userId = user?.uid;
   console.log(userId);
+
+
 
   useEffect(() => {
     const fetchChallenges = async () => {
@@ -40,13 +43,11 @@ const MyActivictes = () => {
 
   const handleDelete = (id) => {
     console.log("delete data", id);
-    fetch(`http://localhost:5000/my-activities/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
+      axiosInstance.delete(`/my-activities/${id}`,)
+      
       .then((data) => {
         console.log("after delete data", data);
-        if (data.deletedCount) {
+        if (data.data.deletedCount) {
           Swal.fire({
             position: "top-end",
             icon: "success",

@@ -2,8 +2,10 @@ import React, { use } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import useAxios from "./useAxios";
 
 const CreateChallenges = () => {
+  const axiosInstance = useAxios()
   const navigate = useNavigate()
   const { user } = use(AuthContext);
   console.log(user);
@@ -21,14 +23,8 @@ const CreateChallenges = () => {
       imageUrl: e.target.imageUrl.value,
       createdBy: user.email,
     };
-    fetch('http://localhost:5000/challenges', {
-      method: 'POST',
-      headers:{
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(challengeData)
-    })
-    .then(res => res.json())
+   axiosInstance.post('/challenges', challengeData)
+   
     .then(data => {
      Swal.fire({
   position: "top-end",

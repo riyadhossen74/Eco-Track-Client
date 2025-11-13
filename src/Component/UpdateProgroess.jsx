@@ -1,9 +1,12 @@
-import React, { useRef } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router";
+import useAxios from "./useAxios";
 import Swal from "sweetalert2";
 
+
+
+
 const UpdateProgroess = () => {
-  const UpdateRef = useRef();
+  const axiosInstance = useAxios();
   const data = useLoaderData();
   console.log(data);
   const navigate = useNavigate();
@@ -13,19 +16,13 @@ const UpdateProgroess = () => {
     const updateProgress = {
       status: e.target.status.value,
       progress: e.target.progress.value,
-      
     };
     console.log(updateProgress);
-    fetch(`http://localhost:5000/my-activities/${data._id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updateProgress),
-    })
-      .then((res) => res.json())
+    axiosInstance
+      .patch(`/my-activities/${data._id}`, updateProgress)
+
       .then((data) => {
-        if (data.modifiedCount) {
+        if (data.data.modifiedCount) {
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -34,8 +31,9 @@ const UpdateProgroess = () => {
             timer: 1500,
           });
 
-          goBack();
+         
         }
+         goBack();
       })
       .catch((err) => {
         console.log(err);
