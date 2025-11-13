@@ -21,9 +21,9 @@ const HeroSection = () => {
 <div className="w-full mx-auto py-8 relative">
 
   {/* Sticky Text */}
-  <div className="absolute top-35 left-80 -translate-x-1/2  text-white px-4 py-2 rounded-lg z-49">
-    <p className="text-green-700 text-5xl my-2 ">Eco Track</p>
-    <p className="hover:text-blue-600 text-2xl">Track your eco-journey, reduce waste, <br /> join challenges, and build a greener future.
+  <div className="absolute hidden md:block top-35 left-80 -translate-x-1/2  text-white px-4 py-2 rounded-lg z-49">
+    <p className="text-green-700 md:text-5xl my-2 ">Eco Track</p>
+    <p className="hover:text-blue-600 md:text-2xl">Track your eco-journey, reduce waste, <br /> join challenges, and build a greener future.
 
 </p>
   </div>

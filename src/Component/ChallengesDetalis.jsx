@@ -53,6 +53,7 @@ const ChallengesDetalis = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        Navigate('/my-activates')
         setData((prev) => ({
           ...prev,
           participants: prev.participants + 1,

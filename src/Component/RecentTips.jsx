@@ -19,7 +19,7 @@ const RecentTips = () => {
    <div>
       <h2 className="text-3xl font-bold text-center mb-10">Recent Tips</h2>
 
-      <div className="container mx-auto p-6 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      <div className="container mx-auto p-6 grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-6">
         {data.map((tip) => (
           <TipsCard key={tip._id} tip={tip} />
         ))}

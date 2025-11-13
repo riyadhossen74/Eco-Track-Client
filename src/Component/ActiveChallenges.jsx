@@ -5,7 +5,7 @@ import { IoIosTrendingUp } from 'react-icons/io';
 const ActiveChallenges = () => {
      
     return (
-       <div className="flex justify-between container mx-auto gap-6">
+       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 justify-between container mx-auto gap-6">
   <div className="flex flex-col justify-center items-center p-10 w-full space-y-2 shadow-2xl border border-gray-300 rounded-2xl 
                   transition-all duration-300 ease-in-out hover:shadow-3xl hover:scale-105 hover:border-green-500 cursor-pointer">
     <img className="w-[50px]" src="/Eco_track.png" alt="" />

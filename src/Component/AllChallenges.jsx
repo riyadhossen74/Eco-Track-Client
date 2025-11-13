@@ -13,10 +13,10 @@ const AllChallenges = () => {
     : challenges;
   return (
     <>
-      <div className="grid grid-cols-5 gap-3  my-5 container mx-auto sticky top-19 z-50  shadow-lg">
+      <div className="grid md:grid-cols-5 gap-3  my-5 container mx-auto md:sticky md:top-19 z-50  shadow-lg">
         <input
           type="text"
-          className="input col-span-3 w-full  bg-transparent"
+          className="input col-span-3 w-full hidden md:block  bg-transparent"
           placeholder="Search"
         />
         <select

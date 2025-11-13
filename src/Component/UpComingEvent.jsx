@@ -15,7 +15,7 @@ const UpComingEvent = () => {
       }, []);
     return (
        <div>
-        <div className="p-4 container mx-auto grid md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="p-4 container mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-5">
   {data.map((event, ) => (
     <EventCard key={event._id } event={event} />
   ))}

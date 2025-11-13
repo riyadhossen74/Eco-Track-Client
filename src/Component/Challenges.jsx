@@ -11,7 +11,7 @@ const Challenges = ({ firstThree }) => {
         Active Challenges
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {firstThree.map((data) => (
           <Card data={data}></Card>
         ))}
@@ -19,9 +19,9 @@ const Challenges = ({ firstThree }) => {
       <div
         tabindex="0"
         role="button"
-        className="user-profile  container mx-auto my-5"
+        className="user-profile  container mx-auto my-5 mt-10"
       >
-        <Link to="/challenges" class="user-profile-inner">
+        <Link to="/challenges" className="user-profile-inner ">
           <p>All Challenges</p>
         </Link>
         <div></div>
