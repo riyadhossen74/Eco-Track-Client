@@ -1,23 +1,23 @@
-import React, { use, useRef } from "react";
+// import React, { use, useRef } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Link } from "react-router";
 
 const ForgotPassword = () => {
-  const { sendPassResetEmailFunc, setLoading } = use(AuthContext);
-  const emailRef = useRef(null);
+  // const { sendPassResetEmailFunc, setLoading } = use(AuthContext);
+  // const emailRef = useRef(null);
 
-  const handleForgetPassword = () => {
-    console.log();
-    const email = emailRef.current.value;
-    sendPassResetEmailFunc(email)
-      .then((res) => {
-        setLoading(false);
-        alert("Check your email to reset password");
-      })
-      .catch((e) => {
-        alert(e.message);
-      });
-  };
+  // const handleForgetPassword = () => {
+  //   console.log();
+  //   const email = emailRef.current.value;
+  //   sendPassResetEmailFunc(email)
+  //     .then((res) => {
+  //       setLoading(false);
+  //       alert("Check your email to reset password");
+  //     })
+  //     .catch((e) => {
+  //       alert(e.message);
+  //     });
+  // };
   return (
     <div className="flex justify-center min-h-screen items-center">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">
@@ -32,13 +32,13 @@ const ForgotPassword = () => {
               className="input"
               placeholder="Email"
               name="email"
-              ref={emailRef}
+              // ref={emailRef}
               required
             />
 
             <button
             type="button"
-              onClick={handleForgetPassword}
+              // onClick={handleForgetPassword}
               className="btn btn-neutral mt-4"
             >
               Forgot
