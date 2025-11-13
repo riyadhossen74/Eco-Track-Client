@@ -1,23 +1,19 @@
-import React, { use, useEffect,  useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 import Swal from "sweetalert2";
 import { Link } from "react-router";
 import useAxios from "./useAxios";
-
-
+import Spinar from "./Spinar";
 
 const MyActivictes = () => {
   const axiosInstance = useAxios();
-  
+
   const { user } = use(AuthContext);
   const [challenges, setChallenges] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   const userId = user?.uid;
-
-
-
 
   useEffect(() => {
     const fetchChallenges = async () => {
@@ -28,7 +24,6 @@ const MyActivictes = () => {
         const data = await res.json();
         setChallenges(data);
       } catch (err) {
-        ;
       } finally {
         setLoading(false);
       }
@@ -37,16 +32,13 @@ const MyActivictes = () => {
     fetchChallenges();
   }, [userId]);
 
-  if (loading) return <p>Loading...</p>;
-
-  
+  if (loading) return <Spinar></Spinar>;
 
   const handleDelete = (id) => {
-    
-      axiosInstance.delete(`/my-activities/${id}`,)
-      
+    axiosInstance
+      .delete(`/my-activities/${id}`)
+
       .then((data) => {
-      
         if (data.data.deletedCount) {
           Swal.fire({
             position: "top-end",
@@ -58,10 +50,8 @@ const MyActivictes = () => {
           const remainingData = challenges.filter((user) => user._id !== id);
           setChallenges(remainingData);
         }
-        
       });
   };
-  
 
   return (
     <section className="max-w-5xl mx-auto my-10 space-y-6 ">
@@ -128,8 +118,8 @@ const MyActivictes = () => {
 
             {/* Buttons */}
             <div className="flex justify-end gap-3">
-              <Link to={`/my-activates/${challenge._id}`}
-                
+              <Link
+                to={`/my-activates/${challenge._id}`}
                 className="px-4 py-2 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition"
               >
                 Update Progress
@@ -144,9 +134,6 @@ const MyActivictes = () => {
           </article>
         ))
       )}
-     
-
-      
     </section>
   );
 };

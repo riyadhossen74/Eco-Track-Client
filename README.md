@@ -1,16 +1,27 @@
-# React + Vite
+# 🌱 EcoTrack - Sustainable Lifestyle Challenge Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site:** [https://luxury-kringle-466178.netlify.app/]
 
-Currently, two official plugins are available:
+EcoTrack is an interactive web application designed to encourage users to adopt eco-friendly habits through engaging challenges and community participation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🔥 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🌍 **Interactive Challenges:** Join sustainability challenges (like “Reduce Plastic” or “Walk to Work”) and track your daily progress.
+- 🧾 **User Progress:** View your joined challenges, update progress.
+- 💡 **Eco Tips Section:** Get daily environment-friendly tips and tricks to adopt sustainable habits.  
+- 🔔 **Real-time Updates:** Automatic data updates using MongoDB, Node.js, and Firebase authentication.
+- 📱 **Responsive Design:** Built with React and Tailwind CSS for seamless performance on mobile, tablet, and desktop devices.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧰 Technologies Used
+
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** Firebase
+
+
+---

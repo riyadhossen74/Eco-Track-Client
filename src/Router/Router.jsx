@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         {
             index:true,
             element:<Home></Home>,
-            loader:() => fetch('http://localhost:5000/challenges')
+            loader:() => fetch('https://eco-track-one-flame.vercel.app/challenges')
         },
         {
             path:'/my-activates',
@@ -56,18 +56,18 @@ const router = createBrowserRouter([
         {
             path:'/my-activates/:id',
             element:<PrivetRoute><UpdateProgroess></UpdateProgroess></PrivetRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/my-activities/${params.id}`)
+            loader: ({params}) => fetch(`https://eco-track-one-flame.vercel.app/my-activities/${params.id}`)
         },
         {
             path:'/challenges',
             element:<AllChallenges></AllChallenges>,
-            loader:() => fetch('http://localhost:5000/challenges')
+            loader:() => fetch('https://eco-track-one-flame.vercel.app/challenges')
             
         },
         {
             path:'/challenges/:id',
             element:<ChallengesDetalis></ChallengesDetalis>,
-            loader: ({params}) => fetch(`http://localhost:5000/challenges/${params.id}`)
+            loader: ({params}) => fetch(`https://eco-track-one-flame.vercel.app/challenges/${params.id}`)
         },
         {
             path:'/create-challenges',
